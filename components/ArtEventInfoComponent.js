@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import { Text, View, ScrollView, FlatList } from 'react-native';
 import { Card, Icon } from 'react-native-elements';
-import { CAMPSITES } from '../shared/campsites';
-import { COMMENTS } from '../shared/comments';
+import { ARTS } from '../shared/Arts';
 
-function RenderCampsite(props) {
+function RenderArtEvent(props) {
 
-    const {campsite} = props;
+    const {artevent} = props;
 
-    if (campsite) {
+    if (artevent) {
         return (
             <Card
-                featuredTitle={campsite.name}
-                image={require('./images/react-lake.jpg')}>
+                featuredTitle={artevent.name}>
                 <Text style={{ margin: 10 }}>
                     {campsite.description}
                 </Text>
+                <Text style={{fontSize: 14}}>{`${artevent.date} -- ${artevent.time} -- ${artevent.location}`}</Text>
+                <Text style={{fontSize: 12}}>{artevent.description}</Text>
+                <Text style={{fontSize: 12}}>More Info</Text>
                 <Icon
                     name={props.favorite ? 'heart' : 'heart-o'}
                     type='font-awesome'
@@ -30,34 +31,12 @@ function RenderCampsite(props) {
     return <View />;
 }
 
-function RenderComments({comments}) {
-    const renderCommentItem = ({item}) => {
-        return(
-            <View style={{margin:10}}>
-                <Text style={{fontSize: 14}}>{item.text}</Text>
-                <Text style={{fontSize: 12}}>{item.rating} Stars</Text>
-                <Text style={{fontSize: 12}}>{`-- ${item.author}, ${item.date}`}</Text>
-            </View>
-        );
-    };
-        return(
-            <Card title='Comments'>
-                <FlatList 
-                    data={comments}
-                    renderItem={renderCommentItem}
-                    keyExtractor={item => item.id.toString()}
-                />
-            </Card>
-        );
-}
-
-class CampsiteInfo extends Component {
+class ArtEventInfo extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            campsites: CAMPSITES,
-            comments: COMMENTS,
+            arts: ARTS,
             favorite: false
         };
     }
@@ -67,7 +46,7 @@ class CampsiteInfo extends Component {
     }
 
     static navigationOptions = {
-        title: 'Campsite Information'
+        title: 'Art Event Information'
     };
 
     render() {
@@ -86,4 +65,4 @@ class CampsiteInfo extends Component {
     }
 }
 
-export default CampsiteInfo;
+export default ArtEventInfo;
