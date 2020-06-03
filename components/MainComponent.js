@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Home from './HomeComponent';
 import Events from './EventsComponent';
 import Favorites from './FavoritesComponent';
+import Submission from './SubmissionComponent';
 import { View, Platform, StyleSheet, Text, ScrollView, Image } from 'react-native';
 import { createStackNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
 import { Icon } from 'react-native-elements';
@@ -76,6 +77,29 @@ const FavoriteNavigator = createStackNavigator(
     }
 );
 
+const SubmissionNavigator = createStackNavigator(
+    {
+        Submission: { screen: Submission }
+    },
+    {
+        navigationOptions: ({navigation}) => ({
+            headerStyle: {
+                backgroundColor: 'rgb(252, 166, 133)'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            },
+            headerLeft: <Icon
+                name='bullhorn'
+                type='font-awesome'
+                iconStyle={styles.stackIcon}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
+    }
+);
+
 const CustomDrawerContentComponent = props => (
     <ScrollView>
         <SafeAreaView 
@@ -135,6 +159,20 @@ const MainNavigator = createDrawerNavigator(
                 )
             } 
         },
+        Submission: { 
+            screen: SubmissionNavigator,
+            navigationOptions: {
+                drawerLabel: 'Submit an Event',
+                drawerIcon: ({tintColor}) => (
+                    <Icon
+                        name='bullhorn'
+                        type='font-awesome'
+                        size={24}
+                        color={tintColor}
+                    />
+                )
+            } 
+        }
     },
     {
         drawerBackgroundColor: 'rgb(243, 236, 223)',
