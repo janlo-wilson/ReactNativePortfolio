@@ -6,7 +6,7 @@ import Submission from './SubmissionComponent';
 import { View, Platform, StyleSheet, Text, ScrollView, Image } from 'react-native';
 import { createStackNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
 import { Icon } from 'react-native-elements';
-import SafeAreaView from 'react-native-safe-area-view';
+//import SafeAreaView from 'react-native-safe-area-view';
 
 const HomeNavigator = createStackNavigator(
     {
@@ -102,7 +102,7 @@ const SubmissionNavigator = createStackNavigator(
 
 const CustomDrawerContentComponent = props => (
     <ScrollView>
-        <SafeAreaView 
+        <View 
             style={styles.container}
             forceInset={{top: 'always', horizontal: 'never'}}>
             <View style={styles.drawerHeader}>
@@ -114,7 +114,7 @@ const CustomDrawerContentComponent = props => (
                 </View>
             </View>
             <DrawerItems {...props} />
-        </SafeAreaView>
+        </View>
     </ScrollView>
 );
 

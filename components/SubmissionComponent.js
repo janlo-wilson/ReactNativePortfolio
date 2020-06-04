@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, StyleSheet, Modal, Picker, Switch, Button } from 'react-native';
+import { Text, View, ScrollView, StyleSheet, TextInput, Picker, Button } from 'react-native';
 import DatePicker from 'react-native-datepicker';
 import TimePicker from 'react-native-simple-time-picker';
 
-class Reservation extends Component {
+class Submission extends Component {
     constructor(props) {
         super(props);
 
@@ -141,4 +141,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Reservation;
+export default Submission;
