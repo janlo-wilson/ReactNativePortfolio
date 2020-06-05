@@ -33,7 +33,7 @@ const HomeNavigator = createStackNavigator(
 
 const EventNavigator = createStackNavigator(
     {
-        Events: { screen: Events }
+        Events: { screen: Events },
     },
     {
         navigationOptions: ({navigation}) => ({

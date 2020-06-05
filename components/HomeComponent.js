@@ -27,7 +27,7 @@ class Home extends Component {
             <ScrollView>
                 <Mission />
                 <Card title='Contact Us' wrapperStyle={{ margin: 20 }} image={require('./images/Flower_Fields.png')}>
-                    <Text>Email: campsites@nucamp.co</Text>
+                    <Text>Email: WhatsUpNC@gmail.com</Text>
                 </Card>
             </ScrollView>
         );

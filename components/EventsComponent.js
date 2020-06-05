@@ -1,13 +1,40 @@
-import React, { Component } from 'react';
-import { Text, ScrollView } from 'react-native';
-import { Card } from 'react-native-elements';
+import React, {Component } from 'react';
+import { Text, ScrollView, StyleSheet, Button } from 'react-native';
+import { Card, Icon } from 'react-native-elements';
+import ArtDirectory from './ArtDirectoryComponent';
+import { createStackNavigator } from 'react-navigation';
 
-function Arts() {
+const ArtsNavigator = createStackNavigator(
+    {
+        screen: ArtDirectory,
+        navigationOptions: ({navigate}) => ({
+            headerStyle: {
+                backgroundColor: 'rgb(252, 166, 133)'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            },
+            headerLeft: <Icon
+                name='paint-brush'
+                type='font-awesome'
+                iconStyle={styles.stackIcon}
+                onPress={() => navigate('Arts', { ArtDirectory })}
+            />
+        })
+    }
+);
+
+function Arts({navigation}) {
     return (
         <Card title="Arts and Theater" image={require('./images/Arts_Playbill.png')}>
             <Text>
             Live theater (plays/musicals), art festivals, museum exhibition openings, and lectures.
             </Text>
+            <Button 
+                title="Click here for Art Events"
+                onPress={() => navigation.navigate('Arts')}
+            />
         </Card>
     );
 }
@@ -41,6 +68,17 @@ function Volunteer() {
         </Card>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    stackIcon: {
+        marginLeft: 10,
+        color: '#fff',
+        fontSize: 24
+    }
+});
 
 class Events extends Component {
 

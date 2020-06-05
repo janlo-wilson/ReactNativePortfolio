@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { FlatList } from 'react-native';
 import { ListItem } from 'react-native-elements';
-import { ARTS } from '../shared/arts';
+//import ArtEventInfo from './ArtEventInfoComponent';
+import { ARTS } from '../shared/Arts';
 
 class ArtDirectory extends Component {
 
@@ -18,13 +19,13 @@ class ArtDirectory extends Component {
 
     render() {
         const { navigate } = this.props.navigation;
-        const renderDirectoryItem = ({ item }) => {
+        const renderArtDirectoryItem = ({ item }) => {
             return (
                 <ListItem
                     title={item.name}
                     subtitle={item.description}
-                    onPress={() => navigate('CampsiteInfo', { campsiteId: item.id })}
-                    leftAvatar={{ source: require('./images/react-lake.jpg') }}
+                    onPress={() => navigate('ArtEventInfo', { artEventId: item.id })}
+                    //leftAvatar={{ source: require('./images/react-lake.jpg') }}
                 />
             );
         };
@@ -32,11 +33,11 @@ class ArtDirectory extends Component {
         return (
             <FlatList
                 data={this.state.campsites}
-                renderItem={renderDirectoryItem}
+                renderItem={renderArtDirectoryItem}
                 keyExtractor={item => item.id.toString()}
             />
         );
     }
 }
 
-export default Directory;
+export default ArtDirectory;
