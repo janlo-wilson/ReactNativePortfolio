@@ -1,8 +1,26 @@
 import React, { Component } from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, ScrollView } from 'react-native';
 import { ListItem } from 'react-native-elements';
 //import ArtEventInfo from './ArtEventInfoComponent';
 import { ARTS } from '../shared/Arts';
+
+function RenderArtEvents(props) {
+    
+    const { artevent } = props;
+    
+    if (artevent) {
+        return (
+            <Card
+                featuredTitle={artevent.name}
+                subtitle={artevent.date}>
+                <Text style={{ margin: 10 }}>
+                    {artevent.description}
+                </Text>
+            </Card>
+        );
+    }
+    return <View />;
+}
 
 class ArtDirectory extends Component {
 
@@ -14,28 +32,16 @@ class ArtDirectory extends Component {
     }
 
     static navigationOptions = {
-        title: 'Arts Directory'
+        title: 'Art Directory'
     };
 
     render() {
-        const { navigate } = this.props.navigation;
-        const renderArtDirectoryItem = ({ item }) => {
-            return (
-                <ListItem
-                    title={item.name}
-                    subtitle={item.description}
-                    onPress={() => navigate('ArtEventInfo', { artEventId: item.id })}
-                    //leftAvatar={{ source: require('./images/react-lake.jpg') }}
-                />
-            );
-        };
-
+        const arteventId = this.props.navigation.getParam('arteventId');
+        const artevent = this.props.arts.filter(artevent => artevent.id === arteventId);
         return (
-            <FlatList
-                data={this.state.campsites}
-                renderItem={renderArtDirectoryItem}
-                keyExtractor={item => item.id.toString()}
-            />
+            <ScrollView>
+                <RenderArtEvents artevent={artevent} />
+            </ScrollView>
         );
     }
 }

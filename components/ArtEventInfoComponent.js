@@ -46,20 +46,18 @@ class ArtEventInfo extends Component {
     }
 
     static navigationOptions = {
-        title: 'Art Event Information'
+        title: 'ArtEventInfo'
     };
 
     render() {
-        const campsiteId = this.props.navigation.getParam('campsiteId');
-        const campsite = this.state.campsites.filter(campsite => campsite.id === campsiteId)[0];
-        const comments = this.state.comments.filter(comment => comment.campsiteId === campsiteId);
+        const arteventId = this.props.navigation.getParam('arteventId');
+        const artevent = this.state.arts.filter(artevent => artevent.id === arteventId)[0];
         return (
             <ScrollView>
-                <RenderCampsite campsite={campsite} 
+                <RenderCampsite artevent={artevent} 
                     favorite={this.state.favorite}
                     markFavorite={() => this.markFavorite()}
                 />
-                <RenderComments comments={comments} />
             </ScrollView>
         );
     }

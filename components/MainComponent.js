@@ -6,6 +6,7 @@ import Submission from './SubmissionComponent';
 import { View, Platform, StyleSheet, Text, ScrollView, Image } from 'react-native';
 import { createStackNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
 import { Icon } from 'react-native-elements';
+import ArtDirectory from './ArtDirectoryComponent';
 //import SafeAreaView from 'react-native-safe-area-view';
 
 const HomeNavigator = createStackNavigator(
@@ -31,26 +32,32 @@ const HomeNavigator = createStackNavigator(
     }
 );
 
-const EventNavigator = createStackNavigator(
+const EventsNavigator = createStackNavigator(
     {
-        Events: { screen: Events },
+        Events: {
+            screen: Events,
+            navigationOptions: ({ navigation }) => ({
+                headerLeft: <Icon
+                    name='calendar'
+                    type='font-awesome'
+                    iconStyle={styles.stackIcon}
+                    onPress={() => navigation.toggleDrawer()}
+                />
+            })
+        },
+        ArtDirectory: { screen: ArtDirectory }
     },
     {
-        navigationOptions: ({navigation}) => ({
+        initialRouteName: 'Events',
+        navigationOptions: {
             headerStyle: {
                 backgroundColor: 'rgb(252, 166, 133)'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
                 color: '#fff'
-            },
-            headerLeft: <Icon
-                name='calendar'
-                type='font-awesome'
-                iconStyle={styles.stackIcon}
-                onPress={() => navigation.toggleDrawer()}
-            />
-        })
+            }
+        }
     }
 );
 
@@ -134,7 +141,7 @@ const MainNavigator = createDrawerNavigator(
             }
         },
         Events: { 
-            screen: EventNavigator,
+            screen: EventsNavigator,
             navigationOptions: {
                 drawerIcon: ({tintColor}) => (
                     <Icon
@@ -144,7 +151,7 @@ const MainNavigator = createDrawerNavigator(
                         color={tintColor}
                     />
                 )
-            } 
+            }
         },
         Favorites: { 
             screen: FavoriteNavigator,

@@ -1,45 +1,55 @@
 import React, {Component } from 'react';
-import { Text, ScrollView, StyleSheet, Button } from 'react-native';
-import { Card, Icon } from 'react-native-elements';
-import ArtDirectory from './ArtDirectoryComponent';
-import { createStackNavigator } from 'react-navigation';
+import { ARTS } from '../shared/Arts';
+import { Text, /*StyleSheet, Button,*/ FlatList, ScrollView } from 'react-native';
+import { Card } from 'react-native-elements';
 
-const ArtsNavigator = createStackNavigator(
-    {
-        screen: ArtDirectory,
-        navigationOptions: ({navigate}) => ({
-            headerStyle: {
-                backgroundColor: 'rgb(252, 166, 133)'
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-                color: '#fff'
-            },
-            headerLeft: <Icon
-                name='paint-brush'
-                type='font-awesome'
-                iconStyle={styles.stackIcon}
-                onPress={() => navigate('Arts', { ArtDirectory })}
-            />
-        })
+class Events extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            arts: ARTS
+        }
     }
-);
 
-function Arts({navigation}) {
-    return (
-        <Card title="Arts and Theater" image={require('./images/Arts_Playbill.png')}>
-            <Text>
-            Live theater (plays/musicals), art festivals, museum exhibition openings, and lectures.
-            </Text>
-            <Button 
-                title="Click here for Art Events"
-                onPress={() => navigation.navigate('Arts')}
+    static navigationOptions = {
+        title: 'Events'
+    };
+
+    render() {
+        const { navigate } = this.props.navigation;
+        /*const Arts = () => {
+            return (
+                <FlatList title='Arts and Theater' image={require('./images/Arts_Playbill.png')}>
+                    <Text>
+                    Live theater (plays/musicals), art festivals, museum exhibition openings, and lectures.
+                    </Text>
+                </Card>
+            );
+        }*/
+        const Arts = ({item}) => {
+            return (
+                <FlatList
+                    title={item.name}
+                    caption={item.description}
+                    onPress={() => navigate('ArtDirectory')}
+                    imageSrc={require('./images/Arts_Playbill.png')}
+                />
+            );
+        };
+
+        return (
+            <FlatList
+                data={this.props.arts}
+                renderItem={Arts}
+                keyExtractor={item => item.id.toString()}
             />
-        </Card>
-    );
-}
+        );
+    }
+};
 
-function Music() {
+
+/*function Music() {
     return (
         <Card title="Music" image={require('./images/Music_Apocalyptica.png')}>
             <Text>
@@ -67,36 +77,6 @@ function Volunteer() {
             </Text>
         </Card>
     );
-}
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    stackIcon: {
-        marginLeft: 10,
-        color: '#fff',
-        fontSize: 24
-    }
-});
-
-class Events extends Component {
-
-    static navigationOptions = {
-        title: 'Events'
-    };
-
-    render() {
-
-        return (
-            <ScrollView>
-                <Arts />
-                <Music />
-                <Sports />
-                <Volunteer />
-            </ScrollView>
-        );
-    }
-}
+}*/
 
 export default Events;
