@@ -1,14 +1,21 @@
-import React, {Component } from 'react';
-import { ARTS } from '../shared/Arts';
-import { Text, /*StyleSheet, Button,*/ FlatList, ScrollView } from 'react-native';
-import { Card } from 'react-native-elements';
+import React, { Component } from 'react';
+import { ACARD } from '../shared/ACard';
+import { MCARD } from '../shared/MCard';
+import { SCARD } from '../shared/SCard';
+import { VCARD } from '../shared/VCard';
+import { FlatList, View } from 'react-native';
+import { ListItem } from 'react-native-elements';
+
 
 class Events extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            arts: ARTS
+            acard: ACARD,
+            mcard: MCARD,
+            scard: SCARD,
+            vcard: VCARD
         }
     }
 
@@ -18,65 +25,75 @@ class Events extends Component {
 
     render() {
         const { navigate } = this.props.navigation;
-        /*const Arts = () => {
+
+        const renderArts = ({ item }) => {
             return (
-                <FlatList title='Arts and Theater' image={require('./images/Arts_Playbill.png')}>
-                    <Text>
-                    Live theater (plays/musicals), art festivals, museum exhibition openings, and lectures.
-                    </Text>
-                </Card>
-            );
-        }*/
-        const Arts = ({item}) => {
-            return (
-                <FlatList
+                <ListItem
                     title={item.name}
-                    caption={item.description}
-                    onPress={() => navigate('ArtDirectory')}
-                    imageSrc={require('./images/Arts_Playbill.png')}
+                    subtitle={item.description}
+                    leftAvatar={{ source: require('./images/Arts_Playbill.png') }}
+                    onPress={() => navigate('Arts')}
+                />
+            );
+        };
+
+        const renderMusic = ({ item }) => {
+            return (
+                <ListItem
+                    title={item.name}
+                    subtitle={item.description}
+                    leftAvatar={{ source: require('./images/Music_Apocalyptica.png') }}
+                    onPress={() => navigate('Music')}
+                />
+            );
+        };
+        const renderSports = ({ item }) => {
+            return (
+                <ListItem
+                    title={item.name}
+                    subtitle={item.description}
+                    leftAvatar={{ source: require('./images/Viking_Shoot.png') }}
+                    onPress={() => navigate('Sports')}
+                />
+            );
+        };
+
+        const renderVolunteer = ({ item }) => {
+            return (
+                <ListItem
+                    title={item.name}
+                    subtitle={item.description}
+                    leftAvatar={{ source: require('./images/Volunteer_Mural.png') }}
+                    onPress={() => navigate('Volunteer')}
                 />
             );
         };
 
         return (
-            <FlatList
-                data={this.props.arts}
-                renderItem={Arts}
-                keyExtractor={item => item.id.toString()}
-            />
+            <View>
+                <FlatList
+                    data={this.state.acard}
+                    renderItem={renderArts}
+                    keyExtractor={item => item.id.toString()}
+                />
+                <FlatList
+                    data={this.state.mcard}
+                    renderItem={renderMusic}
+                    keyExtractor={item => item.id.toString()}
+                />
+                <FlatList
+                    data={this.state.scard}
+                    renderItem={renderSports}
+                    keyExtractor={item => item.id.toString()}
+                />
+                <FlatList
+                    data={this.state.vcard}
+                    renderItem={renderVolunteer}
+                    keyExtractor={item => item.id.toString()}
+                />
+            </View>
         );
     }
 };
-
-
-/*function Music() {
-    return (
-        <Card title="Music" image={require('./images/Music_Apocalyptica.png')}>
-            <Text>
-            Concerts, open mic nights, symphonies, and festivals.
-            </Text>
-        </Card>
-    );
-}
-
-function Sports() {
-    return (
-        <Card title="Sports" image={require('./images/Viking_Shoot.png')}>
-            <Text>
-            Local minor league sports, surfing competitions, roller derby, and guided hikes.
-            </Text>
-        </Card>
-    );
-}
-
-function Volunteer() {
-    return (
-        <Card title="Volunteer" image={require('./images/Volunteer_Mural.png')}>
-            <Text>
-            Looking for a way to help out your community this weekend? Find it here!
-            </Text>
-        </Card>
-    );
-}*/
 
 export default Events;

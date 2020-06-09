@@ -6,7 +6,10 @@ import Submission from './SubmissionComponent';
 import { View, Platform, StyleSheet, Text, ScrollView, Image } from 'react-native';
 import { createStackNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
 import { Icon } from 'react-native-elements';
-import ArtDirectory from './ArtDirectoryComponent';
+import Arts from './ArtsComponent';
+import Music from './MusicComponent';
+import Sports from './SportsComponent';
+import Volunteer from './VolunteerComponent';
 //import SafeAreaView from 'react-native-safe-area-view';
 
 const HomeNavigator = createStackNavigator(
@@ -45,7 +48,10 @@ const EventsNavigator = createStackNavigator(
                 />
             })
         },
-        ArtDirectory: { screen: ArtDirectory }
+        Arts: { screen: Arts },
+        Music: { screen: Music },
+        Sports: { screen: Sports },
+        Volunteer: { screen: Volunteer }
     },
     {
         initialRouteName: 'Events',
