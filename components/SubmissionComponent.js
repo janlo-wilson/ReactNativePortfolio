@@ -1,7 +1,23 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, StyleSheet, TextInput, Picker, Button } from 'react-native';
+import { Text, View, ScrollView, StyleSheet, Picker, Button } from 'react-native';
+import { Input } from 'react-native-elements'
 import DatePicker from 'react-native-datepicker';
-import TimePicker from 'react-native-simple-time-picker';
+//import TimePicker from 'react-native-simple-time-picker';
+
+/*
+<View style={styles.formRow}>
+                    <Text style={styles.formLabel}>Event Time</Text>
+                    <TimePicker
+                        style={styles.formItem}
+                        selectedValue={this.state.type}
+                        selectedHours={selectedHours}
+                        selectedMinutes={selectedMinutes}
+                        onChange={(hours, minutes) => this.setState({ 
+                            selectedHours: hours, selectedMinutes: minutes 
+                      })}
+                    />
+                </View>
+*/
 
 class Submission extends Component {
     constructor(props) {
@@ -42,7 +58,7 @@ class Submission extends Component {
     }
 
     render() {
-        const { selectedHours, selectedMinutes } = this.state;
+        //const { selectedHours, selectedMinutes } = this.state;
 
         return (
             <ScrollView>
@@ -84,29 +100,19 @@ class Submission extends Component {
                     />
                 </View> 
                 <View style={styles.formRow}>
-                    <Text style={styles.formLabel}>Event Time</Text>
-                    <TimePicker
-                        style={styles.formItem}
-                        selectedValue={this.state.type}
-                        selectedHours={selectedHours}
-                        selectedMinutes={selectedMinutes}
-                        onChange={(hours, minutes) => this.setState({ 
-                            selectedHours: hours, selectedMinutes: minutes 
-                      })}
-                    />
-                </View>
-                <View style={styles.formRow}>
                     <Text style={styles.formLabel}>Event Website</Text>
-                    <TextInput
+                    <Input
                         style={styles.formItem}
+                        placeholder='Website'
                         selectedValue={this.state.url}
                         onValueChange={url => this.setState({ url: url })}
                     />
                 </View>
                 <View style={styles.formRow}>
                     <Text style={styles.formLabel}>Contact Email</Text>
-                    <TextInput
+                    <Input
                         style={styles.formItem}
+                        placeholder='Email'
                         selectedValue={this.state.email}
                         onValueChange={email => this.setState({ email: email })}
                     />

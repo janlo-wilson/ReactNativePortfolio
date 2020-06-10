@@ -41,7 +41,7 @@ export const MUSIC = [
         date: "July 31 - Aug 2, 2020",
         time: "various times",
         start: new Date(2020, 6, 31, 10),
-        location: "St. Michael's (Carlsabad)",
+        location: "St. Michael's (Carlsbad)",
         description: "Considered one of the most innovative musical showcases in the area, this festival will wow you with its wide variety of options.",
         fragment: "One of the most innovative musical showcases in North County!",
         url: "http://www.carlsbadmusicfestival.org/",
