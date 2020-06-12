@@ -4,7 +4,11 @@ import { Card } from 'react-native-elements';
 
 function Mission() {
     return (
-        <Card title="Our Mission" image={require('./images/Beautiful_Ocean.png')}>
+        <Card 
+        title="Our Mission" 
+        wrapperStyle={{ margin: 10 }} 
+        image={require('./images/Beautiful_Ocean.png')}
+        containerStyle={{ backgroundColor: 'lightyellow' }}>
             <Text>
             At What's Up North County we strive to bring all of North San Diego County's hottest
             events to you on one simple, easy-to-use website. You can search for a particular event via
@@ -24,9 +28,13 @@ class Home extends Component {
 
     render() {
         return (
-            <ScrollView>
+            <ScrollView style={{backgroundColor: '#ffffbf'}}>
                 <Mission />
-                <Card title='Contact Us' wrapperStyle={{ margin: 20 }} image={require('./images/Flower_Fields.png')}>
+                <Card 
+                title='Contact Us' 
+                wrapperStyle={{ margin: 10 }} 
+                image={require('./images/Flower_Fields.png')}
+                containerStyle={{ backgroundColor: 'lightyellow' }}>
                     <Text>
                         Do you have questions about any of our events? Feedback about the site? Comments? We'd love to
                         hear from you! Just click on the link below.

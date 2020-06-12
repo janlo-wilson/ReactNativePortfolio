@@ -5,6 +5,7 @@ import { SCARD } from '../shared/SCard';
 import { VCARD } from '../shared/VCard';
 import { FlatList, View } from 'react-native';
 import { ListItem } from 'react-native-elements';
+import * as Animatable from 'react-native-animatable';
 
 
 class Events extends Component {
@@ -28,49 +29,53 @@ class Events extends Component {
 
         const renderArts = ({ item }) => {
             return (
-                <ListItem
-                    title={item.name}
-                    subtitle={item.description}
-                    leftAvatar={{ source: require('./images/Arts_Playbill.png') }}
-                    onPress={() => navigate('Arts')}
-                />
+                    <ListItem
+                        title={item.name}
+                        subtitle={item.description}
+                        leftAvatar={{ source: require('./images/Arts_Playbill.png') }}
+                        onPress={() => navigate('Arts')}
+                        containerStyle={{ backgroundColor: 'lightyellow' }}
+                    />
             );
         };
 
         const renderMusic = ({ item }) => {
             return (
-                <ListItem
-                    title={item.name}
-                    subtitle={item.description}
-                    leftAvatar={{ source: require('./images/Music_Apocalyptica.png') }}
-                    onPress={() => navigate('Music')}
-                />
+                    <ListItem
+                        title={item.name}
+                        subtitle={item.description}
+                        leftAvatar={{ source: require('./images/Music_Apocalyptica.png') }}
+                        onPress={() => navigate('Music')}
+                        containerStyle={{ backgroundColor: 'lightyellow' }}
+                    />
             );
         };
         const renderSports = ({ item }) => {
             return (
-                <ListItem
-                    title={item.name}
-                    subtitle={item.description}
-                    leftAvatar={{ source: require('./images/Viking_Shoot.png') }}
-                    onPress={() => navigate('Sports')}
-                />
+                    <ListItem
+                        title={item.name}
+                        subtitle={item.description}
+                        leftAvatar={{ source: require('./images/Viking_Shoot.png') }}
+                        onPress={() => navigate('Sports')}
+                        containerStyle={{ backgroundColor: 'lightyellow' }}
+                    />
             );
         };
 
         const renderVolunteer = ({ item }) => {
             return (
-                <ListItem
-                    title={item.name}
-                    subtitle={item.description}
-                    leftAvatar={{ source: require('./images/Volunteer_Mural.png') }}
-                    onPress={() => navigate('Volunteer')}
-                />
+                    <ListItem
+                        title={item.name}
+                        subtitle={item.description}
+                        leftAvatar={{ source: require('./images/Volunteer_Mural.png') }}
+                        onPress={() => navigate('Volunteer')}
+                        containerStyle={{ backgroundColor: 'lightyellow' }}
+                    />
             );
         };
 
         return (
-            <View>
+            <Animatable.View animation='fadeInRightBig' duration={2000} delay={1000}>
                 <FlatList
                     data={this.state.acard}
                     renderItem={renderArts}
@@ -91,7 +96,7 @@ class Events extends Component {
                     renderItem={renderVolunteer}
                     keyExtractor={item => item.id.toString()}
                 />
-            </View>
+            </Animatable.View>
         );
     }
 };

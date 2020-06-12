@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, FlatList, Linking } from 'react-native';
 import { Card, Icon } from 'react-native-elements';
 import { MUSIC } from '../shared/Music';
+import * as Animatable from 'react-native-animatable';
 
 class Music extends Component {
 
@@ -58,13 +59,15 @@ class Music extends Component {
         };
 
         return (
-            <FlatList
-                data={this.state.music}
-                renderItem={renderMusic}
-                keyExtractor={item => item.id.toString()}
-                favorite={this.state.favorite}
-                markFavorite={() => this.markFavorite()}
-            />
+            <Animatable.View animation='fadeInDown' duration={2000} delay={1000}>
+                <FlatList
+                    data={this.state.music}
+                    renderItem={renderMusic}
+                    keyExtractor={item => item.id.toString()}
+                    favorite={this.state.favorite}
+                    markFavorite={() => this.markFavorite()}
+                />
+            </Animatable.View>
         );
     }
 

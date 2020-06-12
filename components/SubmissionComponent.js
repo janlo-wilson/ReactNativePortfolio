@@ -2,22 +2,6 @@ import React, { Component } from 'react';
 import { Text, View, ScrollView, StyleSheet, Picker, Button } from 'react-native';
 import { Input } from 'react-native-elements'
 import DatePicker from 'react-native-datepicker';
-//import TimePicker from 'react-native-simple-time-picker';
-
-/*
-<View style={styles.formRow}>
-                    <Text style={styles.formLabel}>Event Time</Text>
-                    <TimePicker
-                        style={styles.formItem}
-                        selectedValue={this.state.type}
-                        selectedHours={selectedHours}
-                        selectedMinutes={selectedMinutes}
-                        onChange={(hours, minutes) => this.setState({ 
-                            selectedHours: hours, selectedMinutes: minutes 
-                      })}
-                    />
-                </View>
-*/
 
 class Submission extends Component {
     constructor(props) {
@@ -26,7 +10,8 @@ class Submission extends Component {
         this.state = {
             type: '',
             date: '',
-            time: '',
+            time1: '',
+            time2: '',
             url: '',
             email: '',
             showModal: false
@@ -50,7 +35,8 @@ class Submission extends Component {
         this.setState({
             type: '',
             date: '',
-            time: '',
+            time1: '',
+            time2: '',
             url: '',
             email: '',
             showModal: false
@@ -58,10 +44,9 @@ class Submission extends Component {
     }
 
     render() {
-        //const { selectedHours, selectedMinutes } = this.state;
 
         return (
-            <ScrollView>
+            <ScrollView style={{backgroundColor: 'lightyellow'}}>
                 <View style={styles.formRow}>
                     <Text style={styles.formLabel}>Type of Event</Text>
                     <Picker
@@ -98,30 +83,53 @@ class Submission extends Component {
                         }}
                         onDateChange={date => { this.setState({ date: date }) }}
                     />
-                </View> 
+                </View>
                 <View style={styles.formRow}>
-                    <Text style={styles.formLabel}>Event Website</Text>
-                    <Input
+                    <Text style={styles.formLabel}>Event Time</Text>
+                    <Picker
                         style={styles.formItem}
+                        selectedValue={this.state.time1}
+                        onValueChange={itemValue => this.setState({ time1: itemValue })}>
+                        <Picker.Item label='1' value='1' />
+                        <Picker.Item label='2' value='2' />
+                        <Picker.Item label='3' value='3' />
+                        <Picker.Item label='4' value='4' />
+                        <Picker.Item label='5' value='5' />
+                        <Picker.Item label='6' value='6' />
+                        <Picker.Item label='7' value='7' />
+                        <Picker.Item label='8' value='8' />
+                        <Picker.Item label='9' value='9' />
+                        <Picker.Item label='10' value='10' />
+                        <Picker.Item label='11' value='11' />
+                        <Picker.Item label='12' value='12' />
+                    </Picker>
+                    <Picker
+                        style={styles.formItem}
+                        selectedValue={this.state.time2}
+                        onValueChange={itemValue => this.setState({ time2: itemValue })}>
+                        <Picker.Item label='A.M.' value='A.M.' />
+                        <Picker.Item label='P.M.' value='P.M.' />
+                    </Picker>
+                </View> 
+                    <Input
                         placeholder='Website'
+                        leftIcon={{ type: 'font-awesome', name: 'globe' }}
+                        leftIconContainerStyle={{ paddingRight: 10 }}
                         selectedValue={this.state.url}
                         onValueChange={url => this.setState({ url: url })}
                     />
-                </View>
-                <View style={styles.formRow}>
-                    <Text style={styles.formLabel}>Contact Email</Text>
                     <Input
-                        style={styles.formItem}
                         placeholder='Email'
+                        leftIcon={{ type: 'font-awesome', name: 'envelope-o' }}
+                        leftIconContainerStyle={{ paddingRight: 10 }}
                         selectedValue={this.state.email}
                         onValueChange={email => this.setState({ email: email })}
                     />
-                </View>
                 <View style={styles.formRow}>
                     <Button
                         onPress={() => this.handleSubmission()}
                         title='Submit'
-                        color='#5637DD'
+                        color='rgb(252, 166, 133)'
                         accessibilityLabel='Tap me to submit an event'
                     />
                 </View>
