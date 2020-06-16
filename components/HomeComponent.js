@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Text, ScrollView, Linking } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Text, ScrollView } from 'react-native';
+import { Card, Button, Icon } from 'react-native-elements';
+import * as MailComposer from 'expo-mail-composer';
 
 function Mission() {
     return (
@@ -9,11 +10,9 @@ function Mission() {
         wrapperStyle={{ margin: 10 }} 
         image={require('./images/Beautiful_Ocean.png')}
         containerStyle={{ backgroundColor: 'lightyellow' }}>
-            <Text>
+            <Text style={{fontSize: 18, alignItems: 'center'}}>
             At What's Up North County we strive to bring all of North San Diego County's hottest
-            events to you on one simple, easy-to-use website. You can search for a particular event via
-            the search bar, browse the different event types on the events page, or get an overview of
-            what's happening via our calendar. Either way, you don't have to keep searching the internet
+            events to you on one simple, easy-to-use app. Don't keep searching the internet
             for something to do - you can find it all right here!
             </Text>
         </Card>
@@ -26,23 +25,43 @@ class Home extends Component {
         title: 'Home'
     }
 
+    sendMail() {
+        MailComposer.composeAsync({
+            recipients: ['WhatsUpNC@gmail.com'],
+            subject: 'Feedback',
+            body: "Dear What's Up family,"
+        })
+    }
+
     render() {
         return (
             <ScrollView style={{backgroundColor: '#ffffbf'}}>
                 <Mission />
                 <Card 
                 title='Contact Us' 
-                wrapperStyle={{ margin: 10 }} 
+                wrapperStyle={{ margin: 10, alignItems: 'center' }} 
                 image={require('./images/Flower_Fields.png')}
                 containerStyle={{ backgroundColor: 'lightyellow' }}>
-                    <Text>
+                    <Text style={{fontSize: 18, alignItems: 'center'}}>
                         Do you have questions about any of our events? Feedback about the site? Comments? We'd love to
-                        hear from you! Just click on the link below.
+                        hear from you! Just click on the button below.
                     </Text>
-                    <Text
-                    style={{color: 'blue'}}
-                    onPress={() => Linking.openURL('mailto:WhatsUpNC@gmail.com')}>
-                        WhatsUpNC@gmail.com</Text>
+                    <Button
+                        title="Contact us!"
+                        buttonStyle={{
+                            backgroundColor: 'rgb(252, 166, 133)', 
+                            marginTop: 30, 
+                            padding: 10,
+                            maxWidth: 200
+                        }}
+                        icon={<Icon
+                            name='envelope-o'
+                            type='font-awesome'
+                            color='#fff'
+                            iconStyle={{marginRight: 10}}
+                        />}
+                        onPress={() => this.sendMail()}
+                    />
                 </Card>
             </ScrollView>
         );

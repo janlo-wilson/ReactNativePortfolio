@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, StyleSheet, Picker, Button } from 'react-native';
+import { Text, View, ScrollView, StyleSheet, Picker, Button, Alert } from 'react-native';
 import { Input } from 'react-native-elements'
 import DatePicker from 'react-native-datepicker';
 
@@ -8,13 +8,12 @@ class Submission extends Component {
         super(props);
 
         this.state = {
-            type: '',
+            type: 'Arts',
             date: '',
-            time1: '',
-            time2: '',
+            time1: '1',
+            time2: 'A.M.',
             url: '',
-            email: '',
-            showModal: false
+            email: ''
         }
     }
 
@@ -22,28 +21,46 @@ class Submission extends Component {
         title: 'Submit an Event'
     }
 
-    toggleModal() {
-        this.setState({ showModal: !this.state.showModal });
-    }
-
-    handleSubmission() {
-        console.log(JSON.stringify(this.state));
-        this.toggleModal();
-    }
-
     resetForm() {
         this.setState({
-            type: '',
+            type: 'Arts',
             date: '',
-            time1: '',
-            time2: '',
+            time1: '1',
+            time2: 'A.M.',
             url: '',
-            email: '',
-            showModal: false
+            email: ''
         });
     }
 
     render() {
+
+        const handleSubmission = () => {
+            console.log(JSON.stringify(this.state));
+            const message = `Event type: ${this.state.type}
+            \nDate: ${this.state.date} / Time: ${this.state.time1} ${this.state.time2}
+            \nEvent website: ${this.state.url}
+            \nContact email ${this.state.email}`;
+    
+            Alert.alert(
+                'Submit Event?',
+                message,
+                [
+                    {
+                        text: 'Cancel',
+                        onPress: () => { 
+                            console.log('Event submission canceled');
+                            this.resetForm(); 
+                        },
+                        style: 'cancel'
+                    },
+                    {
+                        text: 'OK',
+                        onPress: () => { this.resetForm() }
+                    }
+                ],
+                { cancelable: false }
+            )
+        }
 
         return (
             <ScrollView style={{backgroundColor: 'lightyellow'}}>
@@ -123,11 +140,11 @@ class Submission extends Component {
                         leftIcon={{ type: 'font-awesome', name: 'envelope-o' }}
                         leftIconContainerStyle={{ paddingRight: 10 }}
                         selectedValue={this.state.email}
-                        onValueChange={email => this.setState({ email: email })}
+                        onChangeText={email => this.setState({ email: email })}
                     />
                 <View style={styles.formRow}>
                     <Button
-                        onPress={() => this.handleSubmission()}
+                        onPress={handleSubmission}
                         title='Submit'
                         color='rgb(252, 166, 133)'
                         accessibilityLabel='Tap me to submit an event'

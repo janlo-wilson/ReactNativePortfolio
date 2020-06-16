@@ -221,7 +221,8 @@ const styles = StyleSheet.create({
     drawerHeaderText: {
         color: '#fff',
         fontSize: 24,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        fontStyle: 'italic'
     },
     drawerImage: {
         margin: 10,
