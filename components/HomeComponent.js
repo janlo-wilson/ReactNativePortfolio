@@ -35,7 +35,7 @@ class Home extends Component {
 
     render() {
         return (
-            <ScrollView style={{backgroundColor: '#ffffbf'}}>
+            <ScrollView style={{backgroundColor: '#c3e5e7'}}>
                 <Mission />
                 <Card 
                 title='Contact Us' 

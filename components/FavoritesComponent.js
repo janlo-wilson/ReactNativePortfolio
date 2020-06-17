@@ -10,7 +10,7 @@ class Favorites extends Component {
 
     render() {
         return (
-            <ScrollView style={{backgroundColor: '#ffffbf'}}>
+            <ScrollView style={{backgroundColor: '#c3e5e7'}}>
                 <Card 
                 title='Most Popular Events' 
                 wrapperStyle={{ margin: 10 }}

@@ -12,6 +12,7 @@ class Submission extends Component {
             date: '',
             time1: '1',
             time2: 'A.M.',
+            title: '',
             url: '',
             email: ''
         }
@@ -27,6 +28,7 @@ class Submission extends Component {
             date: '',
             time1: '1',
             time2: 'A.M.',
+            title: '',
             url: '',
             email: ''
         });
@@ -38,18 +40,19 @@ class Submission extends Component {
             console.log(JSON.stringify(this.state));
             const message = `Event type: ${this.state.type}
             \nDate: ${this.state.date} / Time: ${this.state.time1} ${this.state.time2}
+            \nEvent name: ${this.state.title}
             \nEvent website: ${this.state.url}
-            \nContact email ${this.state.email}`;
-    
+            \nContact email: ${this.state.email}`;
+
             Alert.alert(
                 'Submit Event?',
                 message,
                 [
                     {
                         text: 'Cancel',
-                        onPress: () => { 
+                        onPress: () => {
                             console.log('Event submission canceled');
-                            this.resetForm(); 
+                            this.resetForm();
                         },
                         style: 'cancel'
                     },
@@ -63,7 +66,7 @@ class Submission extends Component {
         }
 
         return (
-            <ScrollView style={{backgroundColor: 'lightyellow'}}>
+            <ScrollView style={{ backgroundColor: 'lightyellow' }}>
                 <View style={styles.formRow}>
                     <Text style={styles.formLabel}>Type of Event</Text>
                     <Picker
@@ -127,21 +130,30 @@ class Submission extends Component {
                         <Picker.Item label='A.M.' value='A.M.' />
                         <Picker.Item label='P.M.' value='P.M.' />
                     </Picker>
-                </View> 
-                    <Input
-                        placeholder='Website'
-                        leftIcon={{ type: 'font-awesome', name: 'globe' }}
-                        leftIconContainerStyle={{ paddingRight: 10 }}
-                        selectedValue={this.state.url}
-                        onValueChange={url => this.setState({ url: url })}
-                    />
-                    <Input
-                        placeholder='Email'
-                        leftIcon={{ type: 'font-awesome', name: 'envelope-o' }}
-                        leftIconContainerStyle={{ paddingRight: 10 }}
-                        selectedValue={this.state.email}
-                        onChangeText={email => this.setState({ email: email })}
-                    />
+                </View>
+                <View containerStyle={{maxWidth: 300}}>
+                <Input
+                    placeholder='Event Name'
+                    leftIcon={{ type: 'font-awesome', name: 'info', size: 20, color: 'gray' }}
+                    leftIconContainerStyle={{ paddingRight: 20 }}
+                    value={this.state.title}
+                    onChangeText={title => this.setState({ title: title })}
+                />
+                <Input
+                    placeholder='Event Website'
+                    leftIcon={{ type: 'font-awesome', name: 'globe', size: 20, color: 'gray' }}
+                    leftIconContainerStyle={{ paddingRight: 20 }}
+                    value={this.state.url}
+                    onChangeText={url => this.setState({ url: url })}
+                />
+                <Input
+                    placeholder='Contact Email'
+                    leftIcon={{ type: 'font-awesome', name: 'envelope-o', size: 20, color: 'gray' }}
+                    leftIconContainerStyle={{ paddingRight: 20 }}
+                    value={this.state.email}
+                    onChangeText={email => this.setState({ email: email })}
+                />
+                </View>
                 <View style={styles.formRow}>
                     <Button
                         onPress={handleSubmission}

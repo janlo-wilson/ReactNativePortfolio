@@ -10,7 +10,6 @@ import Arts from './ArtsComponent';
 import Music from './MusicComponent';
 import Sports from './SportsComponent';
 import Volunteer from './VolunteerComponent';
-//import SafeAreaView from 'react-native-safe-area-view';
 
 const HomeNavigator = createStackNavigator(
     {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, FlatList, Linking, Share, StyleSheet, View } from 'react-native';
+import { Text, FlatList, Linking, Share, StyleSheet, View, ScrollView } from 'react-native';
 import { Card, Icon } from 'react-native-elements';
 import { VOLUNTEER } from '../shared/Volunteer';
 import * as Animatable from 'react-native-animatable';
@@ -9,13 +9,18 @@ class Volunteer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            volunteer: VOLUNTEER,
-            favorite: false
+            volunteer: VOLUNTEER
         };
     }
 
-    markFavorite() {
-        this.setState({ favorite: true });
+    markFavorite({ item }) {
+        item.featured = true;
+        this.forceUpdate();
+    }
+
+    markUnFavorite({ item }) {
+        item.featured = false;
+        this.forceUpdate();
     }
 
     static navigationOptions = {
@@ -57,14 +62,14 @@ class Volunteer extends Component {
                     </Text>
                     <View style={styles.cardRow}>
                         <Icon
-                            name={this.state.favorite ? 'heart' : 'heart-o'}
+                            name={item.featured ? 'heart' : 'heart-o'}
                             type='font-awesome'
                             color='rgb(252, 166, 133)'
                             style={styles.cardItem}
                             raised
                             reverse
-                            onPress={() => this.state.favorite ?
-                                console.log('Already set as favorite') : this.markFavorite()}
+                            onPress={() => item.featured ?
+                                this.markUnFavorite({ item }) : this.markFavorite({ item })}
                         />
                         <Icon
                             name={'share'}
@@ -81,15 +86,17 @@ class Volunteer extends Component {
         };
 
         return (
-            <Animatable.View animation='fadeInDown' duration={2000} delay={1000}>
-                <FlatList
-                    data={this.state.volunteer}
-                    renderItem={renderVolunteer}
-                    keyExtractor={item => item.id.toString()}
-                    favorite={this.state.favorite}
-                    markFavorite={() => this.markFavorite()}
-                />
-            </Animatable.View>
+            <ScrollView style={{ backgroundColor: '#c3e5e7' }}>
+                <Animatable.View animation='fadeInDown' duration={2000} delay={1000}>
+                    <FlatList
+                        data={this.state.volunteer}
+                        renderItem={renderVolunteer}
+                        keyExtractor={item => item.id.toString()}
+                        favorite={this.state.favorite}
+                        markFavorite={() => this.markFavorite()}
+                    />
+                </Animatable.View>
+            </ScrollView>
         );
     }
 
