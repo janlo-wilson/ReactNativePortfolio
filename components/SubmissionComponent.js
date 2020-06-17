@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, ScrollView, StyleSheet, Picker, Button, Alert } from 'react-native';
+import { Text, View, ScrollView, StyleSheet, Picker, Button, Alert, Image } from 'react-native';
 import { Input } from 'react-native-elements'
 import DatePicker from 'react-native-datepicker';
 
@@ -160,6 +160,12 @@ class Submission extends Component {
                         title='Submit'
                         color='rgb(252, 166, 133)'
                         accessibilityLabel='Tap me to submit an event'
+                    />
+                </View>
+                <View style={{alignItems: 'center', marginTop: 30}}>
+                    <Image 
+                    source={require('./images/Pretty_Sunset.png')}
+                    style={{width: 250, height: 150}}
                     />
                 </View>
             </ScrollView>

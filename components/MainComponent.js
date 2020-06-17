@@ -18,11 +18,12 @@ const HomeNavigator = createStackNavigator(
     {
         navigationOptions: ({navigation}) => ({
             headerStyle: {
-                backgroundColor: 'rgb(252, 166, 133)'
+                backgroundColor: 'rgb(255, 200, 179)'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#808080',
+                fontSize: 24
             },
             headerLeft: <Icon
                 name='home'
@@ -56,11 +57,12 @@ const EventsNavigator = createStackNavigator(
         initialRouteName: 'Events',
         navigationOptions: {
             headerStyle: {
-                backgroundColor: 'rgb(252, 166, 133)'
+                backgroundColor: 'rgb(255, 200, 179)'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#808080',
+                fontSize: 24
             }
         }
     }
@@ -73,11 +75,12 @@ const FavoriteNavigator = createStackNavigator(
     {
         navigationOptions: ({navigation}) => ({
             headerStyle: {
-                backgroundColor: 'rgb(252, 166, 133)'
+                backgroundColor: 'rgb(255, 200, 179)'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#808080',
+                fontSize: 24
             },
             headerLeft: <Icon
                 name='heart'
@@ -96,11 +99,12 @@ const SubmissionNavigator = createStackNavigator(
     {
         navigationOptions: ({navigation}) => ({
             headerStyle: {
-                backgroundColor: 'rgb(252, 166, 133)'
+                backgroundColor: 'rgb(255, 200, 179)'
             },
             headerTintColor: '#fff',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#808080',
+                fontSize: 24
             },
             headerLeft: <Icon
                 name='bullhorn'
@@ -187,7 +191,7 @@ const MainNavigator = createDrawerNavigator(
         }
     },
     {
-        drawerBackgroundColor: 'rgb(243, 236, 223)',
+        drawerBackgroundColor: '#c3e5e7',
         contentComponent: CustomDrawerContentComponent
     }
 );
@@ -210,7 +214,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     drawerHeader: {
-        backgroundColor: 'rgb(252, 166, 133)',
+        backgroundColor: 'rgb(255, 200, 179)',
         height: 140,
         alignItems: 'center',
         justifyContent: 'center',
@@ -218,7 +222,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     drawerHeaderText: {
-        color: '#fff',
+        color: '#808080',
         fontSize: 24,
         fontWeight: 'bold',
         fontStyle: 'italic'
@@ -230,7 +234,7 @@ const styles = StyleSheet.create({
     },
     stackIcon: {
         marginLeft: 10,
-        color: '#fff',
+        color: '#808080',
         fontSize: 24
     }
 });

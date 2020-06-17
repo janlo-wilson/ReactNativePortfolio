@@ -31,7 +31,9 @@ class Events extends Component {
             return (
                 <ListItem
                     title={item.name}
+                    titleStyle={{fontSize: 22}}
                     subtitle={item.description}
+                    subtitleStyle={{fontSize: 18}}
                     leftAvatar={{ source: require('./images/Arts_Playbill.png') }}
                     onPress={() => navigate('Arts')}
                     containerStyle={{ backgroundColor: 'lightyellow' }}
@@ -43,7 +45,9 @@ class Events extends Component {
             return (
                 <ListItem
                     title={item.name}
+                    titleStyle={{fontSize: 22}}
                     subtitle={item.description}
+                    subtitleStyle={{fontSize: 18}}
                     leftAvatar={{ source: require('./images/Music_Apocalyptica.png') }}
                     onPress={() => navigate('Music')}
                     containerStyle={{ backgroundColor: 'lightyellow' }}
@@ -54,7 +58,9 @@ class Events extends Component {
             return (
                 <ListItem
                     title={item.name}
+                    titleStyle={{fontSize: 22}}
                     subtitle={item.description}
+                    subtitleStyle={{fontSize: 18}}
                     leftAvatar={{ source: require('./images/Viking_Shoot.png') }}
                     onPress={() => navigate('Sports')}
                     containerStyle={{ backgroundColor: 'lightyellow' }}
@@ -66,7 +72,9 @@ class Events extends Component {
             return (
                 <ListItem
                     title={item.name}
+                    titleStyle={{fontSize: 22}}
                     subtitle={item.description}
+                    subtitleStyle={{fontSize: 18}}
                     leftAvatar={{ source: require('./images/Volunteer_Mural.png') }}
                     onPress={() => navigate('Volunteer')}
                     containerStyle={{ backgroundColor: 'lightyellow' }}
