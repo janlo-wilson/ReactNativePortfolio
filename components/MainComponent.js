@@ -10,6 +10,16 @@ import Arts from './ArtsComponent';
 import Music from './MusicComponent';
 import Sports from './SportsComponent';
 import Volunteer from './VolunteerComponent';
+import { connect } from 'react-redux';
+import { fetchArts, fetchMusic, fetchSports,
+    fetchVolunteer } from '../redux/ActionCreators';
+
+    const mapDispatchToProps = {
+        fetchArts,
+        fetchMusic,
+        fetchSports,
+        fetchVolunteer
+    };
 
 const HomeNavigator = createStackNavigator(
     {
@@ -197,6 +207,14 @@ const MainNavigator = createDrawerNavigator(
 );
 
 class Main extends Component {
+
+        componentDidMount() {
+            this.props.fetchArts();
+            this.props.fetchMusic();
+            this.props.fetchSports();
+            this.props.fetchVolunteer();
+        }
+
     render() {
         return (
             <View style={{
@@ -239,4 +257,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Main;
+export default connect(null, mapDispatchToProps)(Main);

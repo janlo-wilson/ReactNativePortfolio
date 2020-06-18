@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import { Text, FlatList, Linking, Share, StyleSheet, View, ScrollView } from 'react-native';
 import { Card, Icon } from 'react-native-elements';
-import { VOLUNTEER } from '../shared/Volunteer';
+import { connect } from 'react-redux';
 import * as Animatable from 'react-native-animatable';
 
-class Volunteer extends Component {
+const mapStateToProps = state => {
+    return {
+      volunteer: state.volunteer
+    };
+};
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            volunteer: VOLUNTEER
-        };
-    }
+class Volunteer extends Component {
 
     markFavorite({ item }) {
         item.featured = true;
@@ -89,11 +88,12 @@ class Volunteer extends Component {
             <ScrollView style={{ backgroundColor: '#c3e5e7' }}>
                 <Animatable.View animation='fadeInDown' duration={2000} delay={1000}>
                     <FlatList
-                        data={this.state.volunteer}
+                        data={this.props.volunteer.volunteer}
                         renderItem={renderVolunteer}
                         keyExtractor={item => item.id.toString()}
-                        favorite={this.state.favorite}
-                        markFavorite={() => this.markFavorite()}
+                        //favorite={this.state.favorite}
+                        markFavorite={() => markFavorite()}
+                        markUnFavorite={() => this.markUnFavorite()}
                     />
                 </Animatable.View>
             </ScrollView>
@@ -116,4 +116,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Volunteer;
+export default connect(mapStateToProps)(Volunteer);

@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import { Text, FlatList, Linking, View, Share, StyleSheet, ScrollView } from 'react-native';
 import { Card, Icon } from 'react-native-elements';
-import { ARTS } from '../shared/Arts';
+import { connect } from 'react-redux';
 import * as Animatable from 'react-native-animatable';
 
+const mapStateToProps = state => {
+    return {
+      arts: state.Arts
+    };
+};
+
 class Arts extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            arts: ARTS
-        };
-    }
-
 
     markFavorite({ item }) {
         item.featured = true;
@@ -92,11 +90,12 @@ class Arts extends Component {
             <ScrollView style={{ backgroundColor: '#c3e5e7' }}>
                 <Animatable.View animation='fadeInDown' duration={2000} delay={1000}>
                     <FlatList
-                        data={this.state.arts}
+                        data={this.props.arts.arts}
                         renderItem={renderArts}
                         keyExtractor={item => item.id.toString()}
-                        favorite={this.state.favorite}
+                        //favorite={this.state.favorite}
                         markFavorite={() => markFavorite()}
+                        markUnFavorite={() => this.markUnFavorite()}
                     />
                 </Animatable.View>
             </ScrollView>
@@ -119,4 +118,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Arts;
+export default connect(mapStateToProps)(Arts);

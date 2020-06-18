@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import { Text, FlatList, Linking, Share, StyleSheet, View, ScrollView } from 'react-native';
 import { Card, Icon } from 'react-native-elements';
-import { SPORTS } from '../shared/Sports';
+import { connect } from 'react-redux';
 import * as Animatable from 'react-native-animatable';
 
-class Sports extends Component {
+const mapStateToProps = state => {
+    return {
+      sports: state.sports
+    };
+};
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            sports: SPORTS
-        };
-    }
+class Sports extends Component {
 
     markFavorite({ item }) {
         item.featured = true;
@@ -89,11 +88,12 @@ class Sports extends Component {
             <ScrollView style={{ backgroundColor: '#c3e5e7' }}>
                 <Animatable.View animation='fadeInDown' duration={2000} delay={1000}>
                     <FlatList
-                        data={this.state.sports}
+                        data={this.props.sports.sports}
                         renderItem={renderSports}
                         keyExtractor={item => item.id.toString()}
-                        favorite={this.state.favorite}
-                        markFavorite={() => this.markFavorite()}
+                        //favorite={this.state.favorite}
+                        markFavorite={() => markFavorite()}
+                        markUnFavorite={() => this.markUnFavorite()}
                     />
                 </Animatable.View>
             </ScrollView>
@@ -116,4 +116,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Sports;
+export default connect(mapStateToProps)(Sports);

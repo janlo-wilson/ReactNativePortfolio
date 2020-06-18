@@ -1,13 +1,17 @@
 import React from 'react';
 import Main from './components/MainComponent';
 import { View, StyleSheet, AppRegistry } from 'react-native';
+import { Provider } from 'react-redux';
+import { ConfigureStore } from './redux/configureStore';
 console.disableYellowBox = true;
+
+const store = ConfigureStore();
 
 export default function App() {
     return (
-        <View style={styles.container}>
+        <Provider store={store} style={styles.container}>
         <Main />
-        </View>
+        </Provider>
     );
 }
 
