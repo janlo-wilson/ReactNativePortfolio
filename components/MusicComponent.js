@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { Text, FlatList, Linking, Share, StyleSheet, View, ScrollView } from 'react-native';
 import { Card, Icon } from 'react-native-elements';
-import { connect } from 'react-redux';
+import { MUSIC } from '../shared/Music';
 import * as Animatable from 'react-native-animatable';
 
-const mapStateToProps = state => {
-    return {
-      music: state.music
-    };
-};
-
 class Music extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            music: MUSIC
+        };
+    }
 
     markFavorite({ item }) {
         item.featured = true;
@@ -88,12 +89,11 @@ class Music extends Component {
             <ScrollView style={{ backgroundColor: '#c3e5e7' }}>
                 <Animatable.View animation='fadeInDown' duration={2000} delay={1000}>
                     <FlatList
-                       data={this.props.music.music}
-                       renderItem={renderMusic}
-                       keyExtractor={item => item.id.toString()}
-                       //favorite={this.state.favorite}
-                       markFavorite={() => markFavorite()}
-                       markUnFavorite={() => this.markUnFavorite()}
+                        data={this.state.music}
+                        renderItem={renderMusic}
+                        keyExtractor={item => item.id.toString()}
+                        favorite={this.state.favorite}
+                        markFavorite={() => this.markFavorite()}
                     />
                 </Animatable.View>
             </ScrollView>
@@ -116,4 +116,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(mapStateToProps)(Music);
+export default Music;
