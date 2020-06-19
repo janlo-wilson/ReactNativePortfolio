@@ -62,7 +62,7 @@ class Volunteer extends Component {
                     </Text>
                     <View style={styles.cardRow}>
                         <Icon
-                            name={item.featured ? 'heart' : 'heart-o'}
+                            name={item.featured ? 'thumbs-up' : 'thumbs-o-up'}
                             type='font-awesome'
                             color='rgb(252, 166, 133)'
                             style={styles.cardItem}

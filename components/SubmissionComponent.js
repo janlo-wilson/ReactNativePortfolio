@@ -131,28 +131,28 @@ class Submission extends Component {
                         <Picker.Item label='P.M.' value='P.M.' />
                     </Picker>
                 </View>
-                <View containerStyle={{maxWidth: 300}}>
-                <Input
-                    placeholder='Event Name'
-                    leftIcon={{ type: 'font-awesome', name: 'info', size: 20, color: 'gray' }}
-                    leftIconContainerStyle={{ paddingRight: 20 }}
-                    value={this.state.title}
-                    onChangeText={title => this.setState({ title: title })}
-                />
-                <Input
-                    placeholder='Event Website'
-                    leftIcon={{ type: 'font-awesome', name: 'globe', size: 20, color: 'gray' }}
-                    leftIconContainerStyle={{ paddingRight: 20 }}
-                    value={this.state.url}
-                    onChangeText={url => this.setState({ url: url })}
-                />
-                <Input
-                    placeholder='Contact Email'
-                    leftIcon={{ type: 'font-awesome', name: 'envelope-o', size: 20, color: 'gray' }}
-                    leftIconContainerStyle={{ paddingRight: 20 }}
-                    value={this.state.email}
-                    onChangeText={email => this.setState({ email: email })}
-                />
+                <View containerStyle={{ maxWidth: 300 }}>
+                    <Input
+                        placeholder='Event Name'
+                        leftIcon={{ type: 'font-awesome', name: 'info', size: 20, color: 'gray' }}
+                        leftIconContainerStyle={{ paddingRight: 20 }}
+                        value={this.state.title}
+                        onChangeText={title => this.setState({ title: title })}
+                    />
+                    <Input
+                        placeholder='Event Website'
+                        leftIcon={{ type: 'font-awesome', name: 'globe', size: 20, color: 'gray' }}
+                        leftIconContainerStyle={{ paddingRight: 20 }}
+                        value={this.state.url}
+                        onChangeText={url => this.setState({ url: url })}
+                    />
+                    <Input
+                        placeholder='Contact Email'
+                        leftIcon={{ type: 'font-awesome', name: 'envelope-o', size: 20, color: 'gray' }}
+                        leftIconContainerStyle={{ paddingRight: 20 }}
+                        value={this.state.email}
+                        onChangeText={email => this.setState({ email: email })}
+                    />
                 </View>
                 <View style={styles.formRow}>
                     <Button
@@ -162,10 +162,10 @@ class Submission extends Component {
                         accessibilityLabel='Tap me to submit an event'
                     />
                 </View>
-                <View style={{alignItems: 'center', marginTop: 30}}>
-                    <Image 
-                    source={require('./images/Pretty_Sunset.png')}
-                    style={{width: 250, height: 150}}
+                <View style={{ alignItems: 'center', marginTop: 30 }}>
+                    <Image
+                        source={require('./images/Pretty_Sunset.png')}
+                        style={{ width: 250, height: 150 }}
                     />
                 </View>
             </ScrollView>

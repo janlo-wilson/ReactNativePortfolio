@@ -16,7 +16,7 @@ const HomeNavigator = createStackNavigator(
         Home: { screen: Home }
     },
     {
-        navigationOptions: ({navigation}) => ({
+        navigationOptions: ({ navigation }) => ({
             headerStyle: {
                 backgroundColor: 'rgb(255, 200, 179)'
             },
@@ -73,7 +73,7 @@ const FavoriteNavigator = createStackNavigator(
         Favorites: { screen: Favorites }
     },
     {
-        navigationOptions: ({navigation}) => ({
+        navigationOptions: ({ navigation }) => ({
             headerStyle: {
                 backgroundColor: 'rgb(255, 200, 179)'
             },
@@ -83,7 +83,7 @@ const FavoriteNavigator = createStackNavigator(
                 fontSize: 24
             },
             headerLeft: <Icon
-                name='heart'
+                name='thumbs-up'
                 type='font-awesome'
                 iconStyle={styles.stackIcon}
                 onPress={() => navigation.toggleDrawer()}
@@ -97,7 +97,7 @@ const SubmissionNavigator = createStackNavigator(
         Submission: { screen: Submission }
     },
     {
-        navigationOptions: ({navigation}) => ({
+        navigationOptions: ({ navigation }) => ({
             headerStyle: {
                 backgroundColor: 'rgb(255, 200, 179)'
             },
@@ -118,14 +118,14 @@ const SubmissionNavigator = createStackNavigator(
 
 const CustomDrawerContentComponent = props => (
     <ScrollView>
-        <View 
+        <View
             style={styles.container}
-            forceInset={{top: 'always', horizontal: 'never'}}>
+            forceInset={{ top: 'always', horizontal: 'never' }}>
             <View style={styles.drawerHeader}>
-                <View style={{flex: 1}}>
+                <View style={{ flex: 1 }}>
                     <Image source={require('./images/Beach_Sunset.png')} style={styles.drawerImage} />
                 </View>
-                <View style={{flex: 2}}>
+                <View style={{ flex: 2 }}>
                     <Text style={styles.drawerHeaderText}>What's Up North County!</Text>
                 </View>
             </View>
@@ -139,7 +139,7 @@ const MainNavigator = createDrawerNavigator(
         Home: {
             screen: HomeNavigator,
             navigationOptions: {
-                drawerIcon: ({tintColor}) => (
+                drawerIcon: ({ tintColor }) => (
                     <Icon
                         name='home'
                         type='font-awesome'
@@ -149,10 +149,10 @@ const MainNavigator = createDrawerNavigator(
                 )
             }
         },
-        Events: { 
+        Events: {
             screen: EventsNavigator,
             navigationOptions: {
-                drawerIcon: ({tintColor}) => (
+                drawerIcon: ({ tintColor }) => (
                     <Icon
                         name='calendar'
                         type='font-awesome'
@@ -162,24 +162,24 @@ const MainNavigator = createDrawerNavigator(
                 )
             }
         },
-        Favorites: { 
+        Favorites: {
             screen: FavoriteNavigator,
             navigationOptions: {
-                drawerIcon: ({tintColor}) => (
+                drawerIcon: ({ tintColor }) => (
                     <Icon
-                        name='heart'
+                        name='thumbs-up'
                         type='font-awesome'
                         size={24}
                         color={tintColor}
                     />
                 )
-            } 
+            }
         },
-        Submission: { 
+        Submission: {
             screen: SubmissionNavigator,
             navigationOptions: {
                 drawerLabel: 'Submit an Event',
-                drawerIcon: ({tintColor}) => (
+                drawerIcon: ({ tintColor }) => (
                     <Icon
                         name='bullhorn'
                         type='font-awesome'
@@ -187,7 +187,7 @@ const MainNavigator = createDrawerNavigator(
                         color={tintColor}
                     />
                 )
-            } 
+            }
         }
     },
     {
